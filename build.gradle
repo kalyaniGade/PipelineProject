@@ -18,12 +18,30 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
+     def junit4Version   = '4.12'
+     def junitBomVersion = '5.4.2'
+     
+     testImplementation(platform("org.junit:junit-bom:5.4.2"))
+     
+     testImplementation("org.junit.jupiter:junit-jupiter")
+     
+     testImplementation("junit:junit:4.12")
+     
+     testRuntimeOnly("org.junit.vintage:junit-vintage-engine"){
+         because 'allows JUnit 3 and JUnit 4 tests to run'
+     }
+     testRuntimeOnly("org.junit.platform:junit-platform-launcher"){
+         because 'allows tests to run from IDEs that bundle older version of launcher'
+     }
+         
+ } 
 
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:27.0.1-jre'
-
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+test {
+    useJUnitPlatform()
+   
+   testLogging{
+         events = ["passed", "skipped", "failed"]
+    }
+   finalizedBy jacocoTestReport
 }
+mainClassName = 'PipelineProject.App'
