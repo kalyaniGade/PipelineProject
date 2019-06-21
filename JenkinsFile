@@ -11,9 +11,9 @@ pipeline {
 			sh 'gradle test'
 			}
 		}
-		stage ('Deploy') {
+		stage ('Sonarqube') {
 		steps {
-			echo 'Deployment stage'
+			sh 'gradle clean sonarqube'
 			}
 		}
 		stage ('Release') {
