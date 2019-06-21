@@ -9,7 +9,7 @@ pipeline {
 		stage ('Test') {
 		steps {
 			sh 'gradle test'
-			junit 'reports/**/*.xml'
+			
 			}
 		}
 		stage ('Sonarqube') {
