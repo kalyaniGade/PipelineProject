@@ -9,6 +9,8 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+     id 'application'
+     id 'com.gradle.build-scan' version '2.1'
 }
 
 repositories {
@@ -36,12 +38,12 @@ dependencies {
          
  } 
 
-test {
+/*test {
     useJUnitPlatform()
    
    testLogging{
          events = ["passed", "skipped", "failed"]
     }
    finalizedBy jacocoTestReport
-}
+}*/
 mainClassName = 'PipelineProject.App'
