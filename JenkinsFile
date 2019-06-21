@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage ('Sonarqube') {
 		steps {
-			sh 'gradle clean sonarqube'
+			sh 'gradle sonarqube'
 			}
 		}
 		stage ('Release') {
