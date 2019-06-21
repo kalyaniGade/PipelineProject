@@ -1,0 +1,25 @@
+pipeline {
+	agent any 
+	stages {
+		stage ('Build') {
+		steps {
+			sh 'gradle clean build'
+			}
+		}
+		stage ('Test') {
+		steps {
+			echo 'Testing stage'
+			}
+		}
+		stage ('Deploy') {
+		steps {
+			echo 'Deployment stage'
+			}
+		}
+		stage ('Release') {
+		steps {
+			echo 'Release stage '
+			}
+		}
+	}
+}
